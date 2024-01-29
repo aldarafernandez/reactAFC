@@ -1,3 +1,15 @@
-.row{
+
+#grid{
+    margin-top: 3em;
+    margin-bottom: 5em;
+}
+.border{
     border: 5px solid black;
+    
+}
+.h300{
+    height: 50vh;
+}
+.h600{
+    height: 100vh;
 }
