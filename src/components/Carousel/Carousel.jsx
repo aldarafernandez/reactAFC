@@ -5,14 +5,14 @@ import carousel3 from "../../assets/img/carousel3.jpg";
 
 
 const Carousel = () => <div id="carousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
+    <div className="carousel-inner">
+        <div className="carousel-item active">
             <img src={carousel1} className="d-block w-100" alt="..."/>
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
             <img src={carousel2} className="d-block w-100" alt="..."/>
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
             <img src={carousel3} className="d-block w-100" alt="..."/>
         </div>
     </div>
