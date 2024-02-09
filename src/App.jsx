@@ -7,6 +7,7 @@ import Products from './components/Products';
 import Cart from './components/Cart';
 import Register from './components/Register';
 import Login from './components/Login';
+import Product from './components/Product/Product';
 
 const App = () => <>
   <BrowserRouter>
@@ -16,7 +17,7 @@ const App = () => <>
         <Route path='/' element={<Navigate to="/home" />} />
         <Route path='/home' element={<Home />} />
         <Route path='/products' element={<Products />} />
-        <Route path='/product/:id'  />
+        <Route path='/product/:id' element={<Product />}/>
         <Route path='/cart' element={<Cart />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>

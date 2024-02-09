@@ -2,7 +2,8 @@ import "./Featuredproducts.css";
 
 const FeaturedProducts = ({products}) => {
 
-return <div className="container-fluid text-center" id="grid">
+
+return <div className="container text-center" id="grid">
     <div className="row">
         <div className="col-4">
             <img className="row border h300" src={products[0].image}></img>
