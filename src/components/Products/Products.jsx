@@ -12,8 +12,8 @@ const Products = () => {
             then(data => setProducts(data));
     })
 
-    return <div className="container d-flex flex-wrap">{products.map(product =>
-        <div className="col-4 h-auto">
+    return <div className="container mt-5 d-flex flex-wrap">{products.map(product =>
+        <div className="col-4">
             <div className="card">
                 <NavLink to={`/product/${product.id}`}>
                     <img src={product.image} className="card-img-top" alt={product.name} />

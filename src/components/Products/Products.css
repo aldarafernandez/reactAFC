@@ -10,6 +10,7 @@
     padding: 0;
     border: 10px solid white !important;
     border-radius: 0;
+    height:fit-content !important;
 }
 .card-body{
     margin: 0;

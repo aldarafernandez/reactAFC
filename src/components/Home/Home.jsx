@@ -16,7 +16,7 @@ const Home = () =>{
 
 return <>
     <Carousel />
-    <FeaturedProducts products={products.slice(5, 11)} />
+    <FeaturedProducts products={products.slice(7, 13)} />
 </>}
 
 export default Home;

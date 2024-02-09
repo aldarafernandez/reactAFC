@@ -3,12 +3,18 @@
     margin-top: 3em;
     margin-bottom: 5em;
 }
-.border{
-    border: 5px solid white;
+
+img{
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
 }
 .h300{
     height: 50vh;
+    width: 30vw;
 }
 .h600{
     height: 100vh;
+    width: 60vw;
 }
