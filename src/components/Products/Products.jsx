@@ -12,14 +12,16 @@ const Products = () => {
             then(data => setProducts(data));
     })
 
-    return <div className="container mt-5 d-flex flex-wrap">{products.map(product =>
-        <div className="col-4">
+    return <div className="container mt-5 d-flex flex-wrap mb-5">{products.map(product =>
+        <div className="col-4 mb-5" key={product.id}>
             <div className="card">
                 <NavLink to={`/product/${product.id}`}>
                     <img src={product.image} className="card-img-top" alt={product.name} />
                 </NavLink>
                 <div className="card-body d-flex justify-content-between">
-                    <h5 className="card-title">{product.name}</h5>
+                    <NavLink to={`/product/${product.id}`}>
+                        <h5 className="card-title">{product.name}</h5>
+                    </NavLink>
                     <p className="card-text text-end pe-3">{product.price}</p>
                 </div>
             </div>

@@ -13,6 +13,7 @@ const NavBar = () => <nav className="navbar navbar-expand-lg d-flex flex-row bor
                 </form>
             </li>
             <li><NavLink to={"/register"}>Registrarse</NavLink></li>
+            <li><NavLink to={"/login"}>login</NavLink></li>
         </ul>
     </div>
 
