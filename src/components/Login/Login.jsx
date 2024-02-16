@@ -10,12 +10,12 @@ const Login = () => {
         </div>
 
         <div className="input-group mb-4">
-            <span className="input-group-text" id="inputGroup-sizing-sm">Contraseña</span>
-            <input type="password" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+            <input type="password" className="form-control" placeholder="Contraseña" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
         </div>
 
         <div class="col-12 d-flex justify-content-end">
-            <button class="btn btn-dark" type="submit">Enviar</button>
+            <button class="btn btn-outline-dark me-2 registerbtn" type="submit">Registrarse</button>
+            <button class="btn btn-dark submitbtn" type="submit">Enviar</button>   
         </div>
 
     </form>

@@ -11,8 +11,12 @@
 .login button{
     border-radius: 0;
 }
-.login button:hover{
+.submitbtn:hover{
     background-color: white;
     border: 1px black solid;
     color: black;
+}
+.registerbtn:hover{
+    background-color: black;
+    color: white;
 }

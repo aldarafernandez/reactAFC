@@ -4,3 +4,15 @@
     object-position: center;
     object-fit: cover;
 }
+.info{
+    height: 50vh;
+    width: 30vw;
+}
+.name{
+    margin: 0;
+    padding: 0;
+}
+.description{
+    margin: 0;
+    padding: 0;
+}

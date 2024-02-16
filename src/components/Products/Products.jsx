@@ -12,21 +12,34 @@ const Products = () => {
             then(data => setProducts(data));
     })
 
-    return <div className="container mt-5 d-flex flex-wrap mb-5">{products.map(product =>
-        <div className="col-4 mb-5" key={product.id}>
-            <div className="card">
-                <NavLink to={`/product/${product.id}`}>
-                    <img src={product.image} className="card-img-top" alt={product.name} />
-                </NavLink>
-                <div className="card-body d-flex justify-content-between">
+    return <main className="container mt-5 mb-5">
+        <input type="checkbox" class="btn-check" id="zapatos" autocomplete="off" />
+        <label class="btn btn-outline-dark me-1" for="zapatos">Zapatos</label>
+
+        <input type="checkbox" class="btn-check" id="bolsos" autocomplete="off" />
+        <label class="btn btn-outline-dark me-1" for="bolsos">Bolsos</label>
+
+        <input type="checkbox" class="btn-check" id="joyas" autocomplete="off" />
+        <label class="btn btn-outline-dark me-1" for="joyas">Joyas</label>
+
+        <input type="checkbox" class="btn-check" id="relojes" autocomplete="off" />
+        <label class="btn btn-outline-dark me-1" for="relojes">Relojes</label>
+
+        <div className="mt-5 d-flex flex-wrap mb-5">{products.map(product =>
+            <div className="col-4" key={product.id}>
+                <div className="card">
                     <NavLink to={`/product/${product.id}`}>
-                        <h5 className="card-title">{product.name}</h5>
+                        <img src={product.image} className="card-img-top product-img" alt={product.name} />
                     </NavLink>
-                    <p className="card-text text-end pe-3">{product.price}</p>
+                    <div className="card-body d-flex justify-content-between">
+                        <NavLink to={`/product/${product.id}`}>
+                            <h5 className="card-title">{product.name}</h5>
+                        </NavLink>
+                        <p className="card-text text-end pe-3">{product.price} €</p>
+                    </div>
                 </div>
-            </div>
-        </div>)}
-    </div>;
+            </div>)}
+    </div></main>;
 
 }
 

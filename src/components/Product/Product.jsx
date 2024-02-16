@@ -14,19 +14,24 @@ const Product = () => {
             then(data => setProduct(data));
     }, [id])
 
-    return <div className="d-flex justify-content-center mt-5">
-        <div className="card mb-3">
-            <div className="row g-0">
+    return <div className="container mt-5">
+        <div className="card mb-3 d-flex flex-row justify-content-start">
+            <div className="g-0">
                 <div className="col-md-12">
                     <img src={product.image} className="me-5 mb-5 imgDetail" alt={product.name} />
                 </div>
             </div>
-            <div className="row g-0">
+            <div className="g-0">
                 <div className="col-md-12 mb-5">
-                    <div className="card-body">
-                        <h5 className="card-title text-start fs-1">{product.name}</h5>
-                        <p className="card-text text-start">{product.description}</p>
-                        <p className="card-text text-end"><small className="text-body-secondary border-bottom">{product.price}</small></p>
+                    <div className="card-body d-flex flex-column justify-content-between info">
+                        <div>
+                            <h2 className="card-title text-start fs-2 name">{product.name}</h2>
+                            <p className="card-text text-start description mt-5 fs-6">{product.description}</p>
+                        </div>
+                        <div className="d-flex justify-content-end flex-column">
+                            <p className="card-text text-end text-body-secondary">{product.price}€</p>
+                            <button type="button" class="btn btn-dark">Añadir al carrito</button>
+                        </div>
                     </div>
                 </div>
             </div>
