@@ -33,7 +33,7 @@ const Products = () => {
                     </NavLink>
                     <div className="card-body d-flex justify-content-between">
                         <NavLink to={`/product/${product.id}`}>
-                            <h5 className="card-title">{product.name}</h5>
+                            <h2 className="card-title font-title-products">{product.name}</h2>
                         </NavLink>
                         <p className="card-text text-end pe-3">{product.price} €</p>
                     </div>
