@@ -14,7 +14,7 @@ const Register = () => {
 
     const handleSubmit = (event) => {
 
-        event.precentDefault();
+        event.preventDefault();
         register(username, name, surname, email, password);
     }
 
