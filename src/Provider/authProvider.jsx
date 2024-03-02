@@ -46,10 +46,29 @@ const AuthProvider = ({ children }) => {
         setToken(null);
     };
 
+
+    const register = async(username, name, surname, email, password) => {
+
+        try {
+            
+            const response = await axios.post("http://localhost:8080/api/user/new", {username, name, surname, email, password});
+
+            if (response.status === 200) {
+                login(username, password);
+            }
+
+        } catch (error) {
+            
+        }
+    }
+
     const contextValue = useMemo(
         () => ({
             token,
             setTokenState,
+            login,
+            logout,
+            register,
         }),
         [token]
     );
