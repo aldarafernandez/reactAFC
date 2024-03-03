@@ -15,11 +15,12 @@ const Products = () => {
         fetch("http://localhost:8080/api/product/all").
             then(response => response.json()).
             then(data => {
-                let filteredData = data;
-                if (zapatos) filteredData = filteredData.filter(product => product.category === "ZAPATOS");
-                if (bolsos) filteredData = filteredData.filter(product => product.category === "BOLSOS");
-                if (joyas) filteredData = filteredData.filter(product => product.category === "JOYAS");
-                if (relojes) filteredData = filteredData.filter(product => product.category === "RELOJES");
+                let filteredData = data.filter(product => 
+                    (zapatos && product.category === "ZAPATOS") ||
+                    (bolsos && product.category === "BOLSOS") ||
+                    (joyas && product.category === "JOYAS") ||
+                    (relojes && product.category === "RELOJES")
+                );
                 setProducts(filteredData);
             }, [zapatos, bolsos, joyas, relojes]);
     })
