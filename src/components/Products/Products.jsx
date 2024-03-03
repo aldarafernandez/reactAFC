@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 const Products = () => {
 
     const [products, setProducts] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
 
     const [zapatos, setZapatos] = useState(false);
     const [bolsos, setBolsos] = useState(false);
@@ -15,28 +16,37 @@ const Products = () => {
         fetch("http://localhost:8080/api/product/all").
             then(response => response.json()).
             then(data => {
-                let filteredData = data.filter(product => 
-                    (zapatos && product.category === "ZAPATOS") ||
-                    (bolsos && product.category === "BOLSOS") ||
-                    (joyas && product.category === "JOYAS") ||
-                    (relojes && product.category === "RELOJES")
-                );
-                setProducts(filteredData);
-            }, [zapatos, bolsos, joyas, relojes]);
-    })
+                setAllProducts(data);
+            });
+    }, []);
+
+        useEffect(() => {
+            let filteredProducts = allProducts.filter(product =>
+                (zapatos && product.category === "ZAPATOS") ||
+                (bolsos && product.category === "BOLSOS") ||
+                (joyas && product.category === "JOYAS") ||
+                (relojes && product.category === "RELOJES")
+            );
+            if(zapatos || bolsos || joyas || relojes){
+                setProducts(filteredProducts);
+            }else{
+                setProducts(allProducts);
+            }
+        }, [zapatos, bolsos, joyas, relojes, allProducts]);
+    
 
     return <main className="container mt-5 mb-5">
-        <input type="checkbox" class="btn-check" id="zapatos" autocomplete="off" onChange={() => setZapatos(!zapatos)} />
-        <label class="btn btn-outline-dark me-1" for="zapatos">Zapatos</label>
+        <input type="checkbox" className="btn-check" id="zapatos" autocomplete="off" onChange={() => setZapatos(!zapatos)} />
+        <label className="btn btn-outline-dark me-1" for="zapatos">Zapatos</label>
 
-        <input type="checkbox" class="btn-check" id="bolsos" autocomplete="off" onChange={() => setBolsos(!bolsos)} />
-        <label class="btn btn-outline-dark me-1" for="bolsos">Bolsos</label>
+        <input type="checkbox" className="btn-check" id="bolsos" autocomplete="off" onChange={() => setBolsos(!bolsos)} />
+        <label className="btn btn-outline-dark me-1" for="bolsos">Bolsos</label>
 
-        <input type="checkbox" class="btn-check" id="joyas" autocomplete="off" onChange={() => setJoyas(!joyas)} />
-        <label class="btn btn-outline-dark me-1" for="joyas">Joyas</label>
+        <input type="checkbox" className="btn-check" id="joyas" autocomplete="off" onChange={() => setJoyas(!joyas)} />
+        <label className="btn btn-outline-dark me-1" for="joyas">Joyas</label>
 
-        <input type="checkbox" class="btn-check" id="relojes" autocomplete="off" onChange={() => setRelojes(!relojes)} />
-        <label class="btn btn-outline-dark me-1" for="relojes">Relojes</label>
+        <input type="checkbox" className="btn-check" id="relojes" autocomplete="off" onChange={() => setRelojes(!relojes)} />
+        <label className="btn btn-outline-dark me-1" for="relojes">Relojes</label>
 
         <div className="mt-5 d-flex flex-wrap mb-5">{products.map(product =>
             <div className="col-4" key={product.id}>
@@ -52,7 +62,7 @@ const Products = () => {
                     </div>
                 </div>
             </div>)}
-    </div></main>;
+        </div></main>;
 
 }
 
