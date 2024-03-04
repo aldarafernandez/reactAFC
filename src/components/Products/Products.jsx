@@ -13,40 +13,38 @@ const Products = () => {
     const [relojes, setRelojes] = useState(false);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/product/all").
-            then(response => response.json()).
-            then(data => {
-                setAllProducts(data);
-            });
+        fetch("http://localhost:8080/api/product/all")
+            .then(response => response.json())
+            .then(data => setAllProducts(data));
     }, []);
 
-        useEffect(() => {
-            let filteredProducts = allProducts.filter(product =>
-                (zapatos && product.category === "ZAPATOS") ||
-                (bolsos && product.category === "BOLSOS") ||
-                (joyas && product.category === "JOYAS") ||
-                (relojes && product.category === "RELOJES")
-            );
-            if(zapatos || bolsos || joyas || relojes){
-                setProducts(filteredProducts);
-            }else{
-                setProducts(allProducts);
-            }
-        }, [zapatos, bolsos, joyas, relojes, allProducts]);
-    
+    useEffect(() => {
+        let filteredProducts = allProducts.filter(product =>
+            (zapatos && product.category === "ZAPATOS") ||
+            (bolsos && product.category === "BOLSOS") ||
+            (joyas && product.category === "JOYAS") ||
+            (relojes && product.category === "RELOJES")
+        );
+        if (zapatos || bolsos || joyas || relojes) {
+            setProducts(filteredProducts);
+        } else {
+            setProducts(allProducts);
+        }
+    }, [zapatos, bolsos, joyas, relojes, allProducts]);
+
 
     return <main className="container mt-5 mb-5">
-        <input type="checkbox" className="btn-check" id="zapatos" autocomplete="off" onChange={() => setZapatos(!zapatos)} />
-        <label className="btn btn-outline-dark me-1" for="zapatos">Zapatos</label>
+        <input type="checkbox" className="btn-check" id="zapatos" autoComplete="off" onChange={() => setZapatos(!zapatos)} />
+        <label className="btn btn-outline-dark me-1" htmlFor="zapatos">Zapatos</label>
 
-        <input type="checkbox" className="btn-check" id="bolsos" autocomplete="off" onChange={() => setBolsos(!bolsos)} />
-        <label className="btn btn-outline-dark me-1" for="bolsos">Bolsos</label>
+        <input type="checkbox" className="btn-check" id="bolsos" autoComplete="off" onChange={() => setBolsos(!bolsos)} />
+        <label className="btn btn-outline-dark me-1" htmlFor="bolsos">Bolsos</label>
 
-        <input type="checkbox" className="btn-check" id="joyas" autocomplete="off" onChange={() => setJoyas(!joyas)} />
-        <label className="btn btn-outline-dark me-1" for="joyas">Joyas</label>
+        <input type="checkbox" className="btn-check" id="joyas" autoComplete="off" onChange={() => setJoyas(!joyas)} />
+        <label className="btn btn-outline-dark me-1" htmlFor="joyas">Joyas</label>
 
-        <input type="checkbox" className="btn-check" id="relojes" autocomplete="off" onChange={() => setRelojes(!relojes)} />
-        <label className="btn btn-outline-dark me-1" for="relojes">Relojes</label>
+        <input type="checkbox" className="btn-check" id="relojes" autoComplete="off" onChange={() => setRelojes(!relojes)} />
+        <label className="btn btn-outline-dark me-1" htmlFor="relojes">Relojes</label>
 
         <div className="mt-5 d-flex flex-wrap mb-5">{products.map(product =>
             <div className="col-4" key={product.id}>

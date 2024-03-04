@@ -8,6 +8,8 @@ const AuthProvider = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem("token"));
 
+    const [username, setUsername] = useState(localStorage.getItem("username"));
+
     const setTokenState = (newToken) => {
 
         setToken(newToken);
@@ -27,44 +29,43 @@ const AuthProvider = ({ children }) => {
     }, [token]);
 
 
-    const login = async(username, password) => {
+    const login = async (username, password) => {
 
         try {
-            
-            const response = await axios.post("http://localhost:8080/login", {username, password});
+
+            const response = await axios.post("http://localhost:8080/login", { username, password });
 
             if (response.status === 200) {
                 setToken(response.data.token);
+                setUsername(response.data.username);
             }
-        }catch (error) {
-            
+        } catch (error) {
+            console.log(error)
         }
     };
 
     const logout = () => {
 
         setToken(null);
+        setUsername(null);
     };
 
 
-    const register = async(username, name, surname, email, password) => {
+    const register = async (username, name, surname, email, password) => {
 
         try {
-            
-            const response = await axios.post("http://localhost:8080/api/user/new", {username, name, surname, email, password});
 
-            if (response.status === 200) {
-                login(username, password);
-            }
+            const response = await axios.post("http://localhost:8080/api/user/new", { username, name, surname, email, password });
 
         } catch (error) {
-            
+            console.log(error);
         }
     }
 
     const contextValue = useMemo(
         () => ({
             token,
+            username,
             setTokenState,
             login,
             logout,
