@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import "./Product.css";
 import { useEffect, useState } from "react";
+import { useAuth } from "../../Provider/authProvider";
+
 
 const Product = () => {
 
@@ -8,11 +10,24 @@ const Product = () => {
 
     const { id } = useParams();
 
+    const {username, token} = useAuth();
+
     useEffect(() => {
         fetch(`http://localhost:8080/api/product/${id}`).
             then(response => response.json()).
             then(data => setProduct(data));
     }, [id])
+
+    const handleClick = (event) => {
+
+        event.preventDefault();
+
+        fetch(`http://localhost:8080/${username}/add/${id}`), {
+            headers: {
+                "Authorization": "Bearer " + token,
+            },
+        }
+    }
 
     return <div className="container mt-5">
         <div className="card mb-3 d-flex flex-row justify-content-start">
@@ -30,7 +45,7 @@ const Product = () => {
                         </div>
                         <div className="d-flex justify-content-end flex-column">
                             <p className="card-text text-end text-body-secondary">{product.price}€</p>
-                            <button type="button" class="btn btn-dark">Añadir al carrito</button>
+                            <button type="button" className="btn btn-dark" onClick={handleClick}>Añadir al carrito</button>
                         </div>
                     </div>
                 </div>
