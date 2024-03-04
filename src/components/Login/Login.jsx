@@ -1,7 +1,7 @@
 import { useAuth } from "../../Provider/authProvider";
 import "./Login.css";
 import { useState } from 'react';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -10,13 +10,14 @@ const Login = () => {
     const [password, setPassword] = useState();
     const { login } = useAuth();
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => {
 
         event.preventDefault();
         login(username, password);
-        if (localStorage.getItem("token")) {
-            <Navigate to={"/home"} />
-        }
+        navigate("/home");
+
     }
 
     return <form className="container d-flex flex-column justify-content-center align-items-center mb-5 login" onSubmit={handleSubmit}>
@@ -38,8 +39,8 @@ const Login = () => {
         </div>
 
         <div class="col-12 d-flex justify-content-end">
-            <button class="btn btn-outline-dark me-2 registerbtn"><NavLink to="/register">Registrarse</NavLink></button>
-            <button class="btn btn-dark submitbtn" type="submit">Enviar</button>
+            <a className="btn btn-outline-dark me-2 registerbtn"><NavLink to="/register">Registrarse</NavLink></a>
+            <button className="btn btn-dark submitbtn" type="submit">Enviar</button>
         </div>
 
     </form>
