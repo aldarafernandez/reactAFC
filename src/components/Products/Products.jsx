@@ -6,6 +6,7 @@ const Products = () => {
 
     const [products, setProducts] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
+    const [displayedProducts, setDisplayedProducts] = useState([]);
 
     const [zapatos, setZapatos] = useState(false);
     const [bolsos, setBolsos] = useState(false);
@@ -15,7 +16,10 @@ const Products = () => {
     useEffect(() => {
         fetch("http://localhost:8080/api/product/all")
             .then(response => response.json())
-            .then(data => setAllProducts(data));
+            .then(data => {
+                setAllProducts(data);
+                setDisplayedProducts(data.slice(0, 20));
+            });
     }, []);
 
     useEffect(() => {
@@ -27,10 +31,31 @@ const Products = () => {
         );
         if (zapatos || bolsos || joyas || relojes) {
             setProducts(filteredProducts);
+            setDisplayedProducts(filteredProducts.slice(0, 20));
         } else {
             setProducts(allProducts);
+            setDisplayedProducts(allProducts.slice(0, 20));
         }
     }, [zapatos, bolsos, joyas, relojes, allProducts]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+
+            const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+
+            if (scrollHeight - scrollTop === clientHeight) {
+
+                const nextProducts = products.slice(displayedProducts.length, displayedProducts.length + 20);
+
+                setDisplayedProducts(prevProducts => [...prevProducts, ...nextProducts]);
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [products, displayedProducts]);
 
 
     return <main className="container mt-5 mb-5">
@@ -46,7 +71,7 @@ const Products = () => {
         <input type="checkbox" className="btn-check" id="relojes" autoComplete="off" onChange={() => setRelojes(!relojes)} />
         <label className="btn btn-outline-dark me-1" htmlFor="relojes">Relojes</label>
 
-        <div className="mt-5 d-flex flex-wrap mb-5">{products.map(product =>
+        <div className="mt-5 d-flex flex-wrap mb-5">{displayedProducts.map(product =>
             <div className="col-4" key={product.id}>
                 <div className="card">
                     <NavLink to={`/product/${product.id}`}>
