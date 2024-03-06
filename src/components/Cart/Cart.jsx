@@ -11,12 +11,12 @@ const Cart = () => {
     const [total, setTotal] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:8080/api/${username}/cart`, {
+        fetch(`http://localhost:8080/api/user/${username}/cart`, {
             headers: {
-                "Authorization": "Bearer " + token,
+                "Authorization": `Bearer  ${token}`,
             },
         })
-            .then(response => response.json)
+            .then(response => response.json())
             .then(data => setUserCart(data.cart.cartProducts))
     }, []);
 
