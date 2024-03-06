@@ -13,13 +13,12 @@ const Register = () => {
 
     const navigate = useNavigate();
 
-    const { register, login } = useAuth();
+    const { register } = useAuth();
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
 
         event.preventDefault();
-        register(username, name, surname, email, password);
-        login(username, password);
+        await register(username, name, surname, email, password);
         navigate("/home");
     }
 

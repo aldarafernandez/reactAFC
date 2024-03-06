@@ -21,9 +21,11 @@ const AuthProvider = ({ children }) => {
         if (token) {
             axios.defaults.headers.common["Authorization"] = "Bearer " + token;
             localStorage.setItem("token", token);
+            localStorage.setItem("username", username);
         } else {
             delete axios.defaults.headers.common["Authorization"];
             localStorage.removeItem("token");
+            localStorage.removeItem("username");
         }
 
     }, [token]);
@@ -56,6 +58,11 @@ const AuthProvider = ({ children }) => {
         try {
 
             const response = await axios.post("http://localhost:8080/api/user/new", { username, name, surname, email, password });
+
+            if (response.status === 200) {
+                
+                await login(username, password);
+            }
 
         } catch (error) {
             console.log(error);
