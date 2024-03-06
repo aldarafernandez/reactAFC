@@ -38,8 +38,8 @@ const Login = () => {
                 } />
         </div>
 
-        <div class="col-12 d-flex justify-content-end">
-            <a className="btn btn-outline-dark me-2 registerbtn"><NavLink to="/register">Registrarse</NavLink></a>
+        <div className="col-12 d-flex justify-content-end">
+            <NavLink to="/register"><div className="btn btn-outline-dark me-2 registerbtn">Registrarse</div></NavLink>
             <button className="btn btn-dark submitbtn" type="submit">Enviar</button>
         </div>
 
