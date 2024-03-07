@@ -50,6 +50,7 @@ const AuthProvider = ({ children }) => {
 
         setToken(null);
         setUsername(null);
+        sessionStorage.removeItem("cart");
     };
 
 
@@ -61,7 +62,11 @@ const AuthProvider = ({ children }) => {
 
             if (response.status === 200) {
                 
+                try{
                 await login(username, password);
+                }catch (error){
+                    console.log("error al iniciar sesión");
+                }
             }
 
         } catch (error) {
