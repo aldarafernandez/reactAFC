@@ -1,0 +1,16 @@
+.cartProduct{
+    width: 50vw;
+    height: 20vh;
+}
+.cartProduct img{
+    width: 10vw;
+    height: 20vh;
+    object-fit: cover;
+    object-position: center;
+}
+.total {
+    width: 100%;
+    border-top: 1px solid #000;
+    padding-top: 20px;
+    margin-bottom: 50em;
+}
