@@ -16,13 +16,6 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        //fetch(`http://localhost:8080/api/user/${username}/cart`, {
-        //  headers: {
-        //    "Authorization": `Bearer  ${token}`,
-        //},
-        //})
-        // .then(response => response.json())
-        //.then(data => setUserCart(data.cart.cartProducts))
 
         const cart = JSON.parse(sessionStorage.getItem("cart") || []);
         setUserCart(cart);

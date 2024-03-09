@@ -10,7 +10,7 @@ const Product = () => {
 
     const { id } = useParams();
 
-    const { username, token } = useAuth();
+    const { token } = useAuth();
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/product/${id}`).
@@ -21,12 +21,6 @@ const Product = () => {
     const handleClick = (event) => {
 
         event.preventDefault();
-
-        //fetch(`http://localhost:8080/api/user/${username}/add/${id}`, {
-        //  headers: {
-        //    "Authorization": `Bearer ${token}`,
-        //   },
-        //})
 
         const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
 
