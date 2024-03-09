@@ -24,7 +24,7 @@ const Login = () => {
         <h2 className="align-self-start mb-5">Login</h2>
         <div className="input-group mb-4">
             <span className="input-group-text" id="basic-addon1">@</span>
-            <input type="text" value={username} className="form-control" placeholder="Nombre de ususario" aria-label="Username"
+            <input type="text" required value={username} className="form-control" placeholder="Nombre de ususario" aria-label="Username"
                 onChange={
                     (e) => setUsername(e.target.value)
                 }
@@ -32,7 +32,7 @@ const Login = () => {
         </div>
 
         <div className="input-group mb-4">
-            <input type="password" value={password} className="form-control" placeholder="Contraseña" aria-label="Sizing example input"
+            <input type="password" required value={password} className="form-control" placeholder="Contraseña" aria-label="Sizing example input"
                 onChange={
                     (e) => setPassword(e.target.value)
                 } />
