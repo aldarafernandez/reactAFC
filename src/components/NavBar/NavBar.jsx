@@ -9,7 +9,7 @@ const NavBar = () => {
 
     return <nav className="navbar navbar-expand-lg d-flex flex-row border-bottom">
         <div className="container-fluid d-flex justify-content-between">
-            <h1><NavLink to="/home">Home</NavLink></h1>
+            <h1><NavLink to="/home">LuxuryBazaar</NavLink></h1>
             <ul className="d-flex align-items-center ">
                 <li><NavLink to="/products">Products</NavLink></li>
                 <li>
