@@ -1,8 +1,64 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# LuxuryBazaar
 
-Currently, two official plugins are available:
+Tienda online creada con React + Spring.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Características
+
+- Vista de los productos y detalle de los mismos
+- Registro de usuarios
+- Inicio de sesión
+- Añadir productos al carrito
+
+
+## Intalación
+
+Clona el repositorio de Spring
+
+```bash
+git clone https://github.com/aldarafernandez/springAFC.git
+```
+
+Crea la base de datos MySQL
+
+```bash
+CREATE SCHEMA `tiendabd` ;
+```
+
+Cambia los ajustes de usuario y contraseña del properties en Spring
+
+```bash
+spring.datasource.username=root
+spring.datasource.password=
+```
+
+Clona el repositorio de React
+
+```bash
+git clone https://github.com/aldarafernandez/reactAFC.git
+```
+
+
+Instala las dependencias de React
+
+```bash
+npm install react
+npm install react-router-dom
+npm install axios
+```
+
+Inicia el proyecto de Spring
+
+Inicia el proyecto de React
+
+```bash
+  npm run dev
+```
+
+
+## Autor
+
+- [@aldarafernandez](https://www.github.com/aldarafernandez)
+
+
